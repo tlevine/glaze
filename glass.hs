@@ -1,13 +1,15 @@
-data ColumnId = String
+type ColumnId = String
 
 type Cell a = (ColumnId, a)
-type Row => [Column]
-type Table => [Row]
+type Row = [Cell String] -- ugly
+type Table = [Row]
 
-type Glaze = [ColumnId] -> Table -> Table
-type Glaze = [ColumnId] -> Table -> Table
+type Glaze = Table -> Table
 
 cast :: ColumnId -> ColumnId -> Glaze
 cast dependent independent = undefined
 
+melt :: ColumnId -> ColumnId -> [ColumnId] -> [ColumnId] -> Glaze
+melt variableName valueName idVars measureVars = undefined
 
+meltSimple = melt "variable" "value"
